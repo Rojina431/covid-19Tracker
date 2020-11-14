@@ -1,6 +1,6 @@
 import React  from 'react';
 import {Table} from 'reactstrap';
-
+import './country.css';
 
 function Render({isLoading,errMess,data}){
    if(isLoading){
@@ -14,7 +14,8 @@ function Render({isLoading,errMess,data}){
    }
    else{
        return(
-           <Table bordered>
+           <main>
+           <Table bordered className="css-table">
            <tr>
             <th>Country</th>
             <th>New Confirmed</th>
@@ -44,7 +45,7 @@ function Render({isLoading,errMess,data}){
                )
            })}
            </Table>
-
+           </main>
        )
    }
 }

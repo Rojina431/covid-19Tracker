@@ -25,7 +25,8 @@ class Main extends Component{
     render(){
       return(
         <React.Fragment>
-         <div className="container">
+         <div className="">
+           <h1>Covid-19 Tracker</h1>
            <Render data={this.props.data.data} isLoading={this.props.data.isLoading} errMess={this.props.data.errMess} />
            <RenderDetail data={this.props.data.data} isLoading={this.props.data.isLoading} errMess={this.props.data.errMess} />
            </div>
