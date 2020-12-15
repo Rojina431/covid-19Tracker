@@ -5,7 +5,7 @@ import './global.css'
 function RenderData({isLoading,errMess,data}){
     if(isLoading){
         return(
-            <h4>Loading</h4>
+            <h4 style={{textAlign:'center'}}>Loading</h4>
         )
     }else if(errMess){
         return(

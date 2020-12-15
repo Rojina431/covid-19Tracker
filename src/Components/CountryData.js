@@ -1,11 +1,12 @@
 import React  from 'react';
-import {Table} from 'reactstrap';
+import {Spinner, Table} from 'reactstrap';
 import './country.css';
+import {uid} from 'react-uid';
 
 function Render({isLoading,errMess,data}){
    if(isLoading){
        return(
-           <h4>Loading</h4>
+           <div style={{textAlign:'center'}}><Spinner animation="grow"></Spinner></div>
        )
    }else if(errMess){
        return(
@@ -16,6 +17,7 @@ function Render({isLoading,errMess,data}){
        return(
            <main>
            <Table bordered className="css-table">
+           <thead>
            <tr>
             <th>Country</th>
             <th>New Confirmed</th>
@@ -26,10 +28,11 @@ function Render({isLoading,errMess,data}){
             <th>Total Death</th>
             <th>Date</th>
            </tr>
+           </thead>
            
            {data.Countries.map((det)=>{
                return(
-                  <tbody>
+                  <tbody key={uid(det)}>
                        <tr>
                         <td>{det.Country}</td>
                          <td>{det.NewConfirmed}</td>
