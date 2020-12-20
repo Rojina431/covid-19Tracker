@@ -2,8 +2,20 @@ import React  from 'react';
 import {Spinner, Table} from 'reactstrap';
 import './country.css';
 import {uid} from 'react-uid';
+import {useState} from 'react';
 
 function Render({isLoading,errMess,data}){
+
+    const [search,setSearch]=useState([]);
+
+    function SearchCountry(){
+        let countryName=data.Countries
+        return countryName.filter((data)=>data.Country.toLowerCase().indexOf(search)>-1)
+    }
+   const handleChange=(e)=>{
+       setSearch(e.target.value)
+   }
+
    if(isLoading){
        return(
            <div style={{textAlign:'center'}}><Spinner animation="grow"></Spinner></div>
@@ -16,6 +28,9 @@ function Render({isLoading,errMess,data}){
    else{
        return(
            <main>
+            <div className="mx-3 mb-2">   
+             <input type="text" onChange={handleChange} placeholder="Search by country name"/>
+           </div>
            <Table bordered className="css-table">
            <thead>
            <tr>
@@ -30,8 +45,9 @@ function Render({isLoading,errMess,data}){
            </tr>
            </thead>
            
-           {data.Countries.map((det)=>{
+           {SearchCountry().map((det)=>{
                return(
+                
                   <tbody key={uid(det)}>
                        <tr>
                         <td>{det.Country}</td>
